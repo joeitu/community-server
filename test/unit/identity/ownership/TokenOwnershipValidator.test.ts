@@ -58,7 +58,15 @@ describe('A TokenOwnershipValidator', (): void => {
   it('errors if no token is stored in the storage.', async(): Promise<void> => {
     // Even if the token is in the WebId, it will error since it's not in the storage
     mockFetch(tokenString);
-    await expect(validator.handle({ webId })).rejects.toThrow(tokenString);
+    await expect(validator.handle({ webId })).rejects.toThrow(expect.objectContaining({
+      message: expect.stringContaining(tokenString),
+      details: {
+        quad: tokenString,
+        subject: `<${webId}>`,
+        predicate: `<${SOLID.oidcIssuerRegistrationToken}>`,
+        object: `"${token}"`,
+      },
+    }));
     expect(fetch).toHaveBeenCalledTimes(0);
   });
 

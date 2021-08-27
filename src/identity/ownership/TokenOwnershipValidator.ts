@@ -91,6 +91,12 @@ export class TokenOwnershipValidator extends OwnershipValidator {
       'to prove it belongs to you.',
       'You can remove this triple again after validation.',
     ].join(' ');
-    throw new BadRequestHttpError(errorMessage);
+    const details = {
+      quad: `<${webId}> <${SOLID.oidcIssuerRegistrationToken}> "${token}".`,
+      subject: `<${webId}>`,
+      predicate: `<${SOLID.oidcIssuerRegistrationToken}>`,
+      object: `"${token}"`,
+    };
+    throw new BadRequestHttpError(errorMessage, { details });
   }
 }
