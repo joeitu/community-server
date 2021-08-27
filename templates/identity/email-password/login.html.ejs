@@ -2,8 +2,8 @@
 <form method="post">
   <% const safePrefilled = locals.prefilled || {}; %>
 
-  <% if (locals.errorMessage) { %>
-    <p class="error"><%= errorMessage %></p>
+  <% if (locals.message) { %>
+    <p class="error"><%= message %></p>
   <% } %>
 
   <fieldset>

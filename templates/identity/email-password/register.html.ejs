@@ -3,8 +3,8 @@
   <% const isBlankForm = !('prefilled' in locals); %>
   <% const safePrefilled = locals.prefilled || {}; %>
 
-  <% if (locals.errorMessage) { %>
-    <p class="error">Error: <%= errorMessage %></p>
+  <% if (locals.message) { %>
+    <p class="error">Error: <%= message %></p>
   <% } %>
 
   <fieldset>
