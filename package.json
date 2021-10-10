@@ -51,7 +51,7 @@
     "jest": "jest --coverageReporters text-summary --",
     "lint": "eslint . --cache --ignore-path .gitignore",
     "prepare": "npm run build",
-    "start": "node ./bin/server.js -p 8080 -b http://0.0.0.0:8080",
+    "start": "node ./bin/server.js -p 8080 -b https://community-server-testbase.app.cern.ch/",
     "start:file": "node ./bin/server.js -c config/file.json -f ./data",
     "test": "npm run test:ts && npm run jest",
     "test:deploy": "test/deploy/validate-package.sh",
